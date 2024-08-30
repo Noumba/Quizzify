@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:quizzify/Widgets/custom_text_widget.dart';
 
 class CustomOutlinedIconButton extends StatelessWidget {
-  const CustomOutlinedIconButton({super.key, required this.buttonLabel});
+  const CustomOutlinedIconButton(
+      {super.key, required this.buttonLabel, required this.updateScreen});
   final String buttonLabel;
+  final Function updateScreen;
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +14,9 @@ class CustomOutlinedIconButton extends StatelessWidget {
           Icons.start_outlined,
           color: Color(0xCFF9F9F9),
         ),
-        onPressed: () {},
+        onPressed: () {
+          updateScreen();
+        },
         style: OutlinedButton.styleFrom(
             shape: const RoundedRectangleBorder(
                 side: BorderSide.none,

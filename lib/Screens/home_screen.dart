@@ -2,20 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:quizzify/Widgets/custom_outlined_button.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  const HomeScreen({super.key, required this.updateScreen});
+  final Function updateScreen;
 
   @override
   Widget build(BuildContext context) {
     // final screen_width = MediaQuery.of(context).size.width;
     // final screen_height = MediaQuery.of(context).size.height;
 
-    return const Center(
+    return Center(
         child: Column(
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        Image(image: AssetImage('asset/images/flutter-logo-3.png')),
-        Text(
+        const Image(image: AssetImage('asset/images/flutter-logo-3.png')),
+        const Text(
           'Learn Flutter and Dart',
           style: TextStyle(
               fontWeight: FontWeight.w600,
@@ -26,7 +27,10 @@ class HomeScreen extends StatelessWidget {
               fontStyle: FontStyle.italic,
               decorationThickness: 5.0),
         ),
-        CustomOutlinedIconButton(buttonLabel: 'Start Quiz')
+        CustomOutlinedIconButton(
+          buttonLabel: 'Start Quiz',
+          updateScreen: updateScreen,
+        )
       ],
     ));
   }
