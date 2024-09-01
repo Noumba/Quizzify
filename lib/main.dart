@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:quizzify/Screens/home_screen.dart';
 import 'package:quizzify/home_page_navigator.dart';
 
 void main() {
