@@ -13,6 +13,17 @@ class QuestionScreen extends StatefulWidget {
 
 class _QuestionScreenState extends State<QuestionScreen> {
   var questionId = 0;
+  var isSelectedTile = false;
+
+  void markSelectedTile() {
+    isSelectedTile = isSelectedTile ? !isSelectedTile : isSelectedTile;
+    print(isSelectedTile);
+    setState(() {
+      isSelectedTile = !isSelectedTile;
+    });
+    print('clicked answer tile');
+    print(isSelectedTile);
+  }
 
   void nextQuestion() {
     setState(() {
@@ -70,10 +81,13 @@ class _QuestionScreenState extends State<QuestionScreen> {
                     const EdgeInsets.symmetric(vertical: 2.0, horizontal: 2.0),
                 color: Colors.white.withOpacity(0.1),
                 child: ListTile(
+                  selected: isSelectedTile,
                   leading: const Icon(Icons.question_mark),
                   title: Center(child: Text(answer)),
                   trailing: const Icon(Icons.check_box_outline_blank),
-                  onTap: () {},
+                  onTap: () {
+                    markSelectedTile();
+                  },
                   tileColor: Colors.white,
                   iconColor: Colors.white,
                   shape: const RoundedRectangleBorder(
